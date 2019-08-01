@@ -1,36 +1,37 @@
 package com.db1.conta.contaapi.domain.entity;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 import org.springframework.util.Assert;
 
+@Embeddable
 public class Historico {
-
-	private Long id;
 	
-	private Conta conta;
+	@Column(name = "data", nullable = false, length = 30)
+	private LocalDateTime data;
 	
+	@Column(name = "tipo", nullable = false, length = 30)
 	private HistoricoTipo tipo;
 	
+	@Column(name = "valor", nullable = false, precision = 14, scale = 2)
 	private Double valor;
 	
+	@Column(name = "saldo_atual", nullable = false, precision = 14, scale = 2)
 	private Double saldoAtual;
 
-	public Historico(Conta conta, HistoricoTipo tipo, Double valor, Double saldoAtual) {
-		Assert.notNull(conta, "Conta é obrigatório");
+	protected Historico() {}
+	
+	public Historico(HistoricoTipo tipo, Double valor, Double saldoAtual) {		
 		Assert.notNull(tipo, "Tipo histórico é obrigatório");
 		Assert.notNull(valor, "Valor é obrigatório");
-		Assert.notNull(saldoAtual, "Saldo atual é obrigatório");		
-		this.conta = conta;
+		Assert.notNull(saldoAtual, "Saldo atual é obrigatório");
+		this.data = LocalDateTime.now();
 		this.tipo = tipo;
 		this.valor = valor;
 		this.saldoAtual = saldoAtual;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Conta getConta() {
-		return conta;
 	}
 
 	public HistoricoTipo getTipo() {

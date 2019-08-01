@@ -36,6 +36,10 @@ public class Cidade {
 		this.nome = nome;
 		this.estado = estado;
 	}
+	
+	public static CidadeFluent builder() {
+		return new CidadeFluentBuilder();
+	}
 
 	public Long getId() {
 		return id;

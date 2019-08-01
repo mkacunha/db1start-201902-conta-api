@@ -40,6 +40,12 @@ public class Agencia {
 		this.cidade = cidade;
 	}
 
+	public Agencia(AgenciaBuilder builder) {
+		this.numero = builder.getNumero();
+		this.digito = builder.getDigito();
+		this.cidade = builder.getCidade();
+	}
+
 	public Long getId() {
 		return id;
 	}
