@@ -3,8 +3,13 @@ package com.db1.conta.contaapi.domain.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.springframework.util.Assert;
 
+@Entity
+@Table(name = "conta")
 public class Conta {
 	
 	private Long id;
